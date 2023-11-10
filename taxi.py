@@ -1,3 +1,5 @@
+from rubles import result
+
 km_data = []
 price_data = []
 all_data = []
@@ -41,6 +43,8 @@ while n_all < len(all_data):
 for item in all_data:
     rubles = ''
     money = str(item[0][0] * item[1][0])
+    money2 = list(str(money))
+    length_money = len(money2)
     if (money[-1] == '0' or money[-1] == '5' or money[-1] == '6' or money[-1] == '7' or money[-1] == '8' or
             money[-1] == '9'):
         rubles = 'рублей'
@@ -48,5 +52,8 @@ for item in all_data:
         rubles = 'рубль'
     elif money[-1] == '2' or money[-1] == '3' or money[-1] == '4':
         rubles = 'рубля'
+
     print(f'{item[0][1]} сотрудник должен сесть в такси № {item[1][1]}\n'
-          f'Директор должен заплатить: {money} {rubles}\n')
+          f'Директор должен заплатить: {money} {rubles}')
+    result(money, length_money, money2)
+    print(' ')
