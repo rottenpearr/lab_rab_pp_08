@@ -7,17 +7,34 @@ n_km = 1
 n_price = 1
 n_all = 1
 
-staff = int(input(f'Введите количество сотрудников: '))
+while True:
+    try:
+        staff = int(input(f'Введите количество сотрудников: '))
+        break
+    except ValueError:
+        print("Введите целое число количества сотрудников!")
+
 print(f'Введите расстояния (в км): ')
 for i in range(staff):
-    km = 0
-    km = int(input())
-    km_data.append([km, str(i+1)])
+    while True:
+        try:
+            km = int(input())
+            break
+        except ValueError:
+            print(f'Введите целое число до дома сотрудника {i + 1}!')
+
+    km_data.append([km, str(i + 1)])
+
 print(f'Введите тарифы такси: ')
 for i in range(staff):
-    price = 0
-    price = int(input())
-    price_data.append([price, str(i+1)])
+    while True:
+        try:
+            price = int(input())
+            break
+        except ValueError:
+            print(f'Введите целое число для тарифа такси №{i + 1}!')
+
+    price_data.append([price, str(i + 1)])
 
 while n_km < len(km_data):
     for i in range(len(km_data) - n_km):
@@ -56,4 +73,4 @@ for item in all_data:
     print(f'{item[0][1]} сотрудник должен сесть в такси № {item[1][1]}\n'
           f'Директор должен заплатить: {money} {rubles}')
     result(money, length_money, money2)
-    print(' ')
+    print('')
